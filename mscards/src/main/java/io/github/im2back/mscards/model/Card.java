@@ -2,6 +2,7 @@ package io.github.im2back.mscards.model;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -21,20 +22,23 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name ="cards")
+@Table(name ="tb_cards")
 @EqualsAndHashCode(of = "id")
 public class Card {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(name = "card_name")
 	private String cardName;
 	
+	@Column(name = "card_flag")
 	@Enumerated(EnumType.STRING)
 	private CardFlag cardFlag;
 	
 	private BigDecimal income;
 	
+	@Column(name = "basic_limit")
 	private BigDecimal basicLimit;
 	
 	
