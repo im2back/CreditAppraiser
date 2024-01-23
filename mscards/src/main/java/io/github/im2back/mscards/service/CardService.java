@@ -6,9 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import io.github.im2back.mscards.model.Card;
-import io.github.im2back.mscards.model.CardRequestDto;
-import io.github.im2back.mscards.model.CardResponseDto;
+import io.github.im2back.mscards.model.card.Card;
+import io.github.im2back.mscards.model.card.CardRequestDto;
+import io.github.im2back.mscards.model.card.CardResponseDto;
 import io.github.im2back.mscards.repository.CardRepository;
 
 @Service

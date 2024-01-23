@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import io.github.im2back.mscards.model.Card;
-import io.github.im2back.mscards.model.CardRequestDto;
-import io.github.im2back.mscards.model.CardResponseDto;
+import io.github.im2back.mscards.model.card.Card;
+import io.github.im2back.mscards.model.card.CardRequestDto;
+import io.github.im2back.mscards.model.card.CardResponseDto;
+import io.github.im2back.mscards.model.clientcard.ClientCardResponseDto;
 import io.github.im2back.mscards.service.CardService;
+import io.github.im2back.mscards.service.ClientCardService;
 
 @RestController
 @RequestMapping("cards")
@@ -27,6 +29,9 @@ public class CardController {
 	
 	@Autowired
 	private CardService service;
+	
+	@Autowired
+	private ClientCardService cliendCardservice;
 	
 	@Transactional
 	@PostMapping
@@ -43,6 +48,13 @@ public class CardController {
 	@GetMapping(params = "income")
 	public ResponseEntity<List<Card>> getCardsIncomeEqualToOrLess(@RequestParam("income") Long income ){
 		List<Card> list = service.getCardsIncomeLessOrEqual(income);	
+		return ResponseEntity.ok(list);
+		
+	}
+	
+	@GetMapping(params = "cpf")
+	public ResponseEntity<List<ClientCardResponseDto>> getClientCardsByCpf(@RequestParam("cpf") String cpf ){
+		List<ClientCardResponseDto> list = cliendCardservice.listCardByCpf(cpf);	
 		return ResponseEntity.ok(list);
 		
 	}

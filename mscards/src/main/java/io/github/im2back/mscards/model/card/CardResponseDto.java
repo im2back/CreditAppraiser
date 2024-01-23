@@ -1,4 +1,4 @@
-package io.github.im2back.mscards.model;
+package io.github.im2back.mscards.model.card;
 
 import java.math.BigDecimal;
 
