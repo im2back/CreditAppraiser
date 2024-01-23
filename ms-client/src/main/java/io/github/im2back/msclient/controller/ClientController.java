@@ -2,6 +2,8 @@ package io.github.im2back.msclient.controller;
 
 import java.net.URI;
 
+import javax.servlet.ServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,8 +39,9 @@ public class ClientController {
 	}
 	
 	@GetMapping(params="cpf")
-	ResponseEntity<ClientResponseDto> getClientByCpf(@RequestParam("cpf")  String cpf){
+	ResponseEntity<ClientResponseDto> getClientByCpf(@RequestParam("cpf")  String cpf,  ServletRequest request){
 		ClientResponseDto clientResponseDto = service.findByCpf(cpf);
+		System.out.println("URL CHAMADA: "+ request.getServerPort() );
 		
 		return ResponseEntity.ok(clientResponseDto);
 	}
