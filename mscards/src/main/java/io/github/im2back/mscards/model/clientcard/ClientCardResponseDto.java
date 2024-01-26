@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public record ClientCardResponseDto(
 		String name,
 		String flag,
-		BigDecimal limitAprove
+		BigDecimal limitApproved
 		) {
 
 

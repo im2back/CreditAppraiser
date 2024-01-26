@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ClientCard {
 	
-	private String cardName;
+	private String name;
 	
-	private String cardFlag;
+	private String flag;
 	
 	private BigDecimal limitApproved;
 
