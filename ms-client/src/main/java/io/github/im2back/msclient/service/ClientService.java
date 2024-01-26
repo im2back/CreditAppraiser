@@ -1,5 +1,7 @@
 package io.github.im2back.msclient.service;
 
+import java.util.NoSuchElementException;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import io.github.im2back.msclient.model.Client;
 import io.github.im2back.msclient.model.ClientRequestDto;
 import io.github.im2back.msclient.model.ClientResponseDto;
 import io.github.im2back.msclient.repository.ClientRepository;
+import io.github.im2back.msclient.service.exception.ServiceClientExceptions;
 
 @Service
 public class ClientService {
@@ -24,8 +27,13 @@ public class ClientService {
 	}
 	
 	public ClientResponseDto findByCpf(String cpf) {
-		Client client = repository.findByCpf(cpf).get();		
-		return new ClientResponseDto(client);
+		try {
+			Client client = repository.findByCpf(cpf).get();		
+			return new ClientResponseDto(client);
+		} catch (NoSuchElementException e) {
+			throw new ServiceClientExceptions(e.getMessage(),cpf);
+		}
+		
 	}
 	
 }

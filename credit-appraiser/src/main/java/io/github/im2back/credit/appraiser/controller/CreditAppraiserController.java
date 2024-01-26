@@ -17,9 +17,14 @@ public class CreditAppraiserController {
 	@Autowired
 	private CreditApraiserService service;
 	
+	@SuppressWarnings("rawtypes")
 	@GetMapping(value="client-status",params="cpf")
-	public ResponseEntity<ClientSituation> checkStatusClient(@RequestParam("cpf") String cpf) {
-		ClientSituation customerSituation = service.getClientSituation(cpf);
-		return ResponseEntity.ok(customerSituation);
+	public ResponseEntity checkStatusClient(@RequestParam("cpf") String cpf) {
+		ClientSituation customerSituation;
+	
+			customerSituation = service.getClientSituation(cpf);
+			return ResponseEntity.ok(customerSituation);
+			
+
 			}
 }
