@@ -2,18 +2,28 @@ package io.github.im2back.credit.appraiser.model;
 
 import java.util.List;
 
-import lombok.AllArgsConstructor;
+import io.github.im2back.credit.appraiser.model.carddtos.ClientCardDto;
+import io.github.im2back.credit.appraiser.model.clientdtos.ClientDto;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
+
 @NoArgsConstructor
 @Builder
 public class ClientSituation {
 
-	private ClientData clientData;
+	private ClientDto clientDto;
 	
-	private List<ClientCard> cards;
+	private List<ClientCardDto> cards;
+
+	public ClientSituation(ClientDto clientDto, List<ClientCardDto> cards) {
+		
+		this.clientDto = clientDto;
+		this.cards = cards;
+	}
+	
+	
+	
 }

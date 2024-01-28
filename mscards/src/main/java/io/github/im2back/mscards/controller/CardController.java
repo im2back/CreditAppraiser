@@ -31,7 +31,7 @@ public class CardController {
 	private CardService service;
 	
 	@Autowired
-	private ClientCardService cliendCardservice;
+	private ClientCardService clientCardservice;
 	
 	@Transactional
 	@PostMapping
@@ -54,7 +54,7 @@ public class CardController {
 	
 	@GetMapping(params = "cpf")
 	public ResponseEntity<List<ClientCardResponseDto>> getClientCardsByCpf(@RequestParam("cpf") String cpf ){
-		List<ClientCardResponseDto> list = cliendCardservice.listCardByCpf(cpf);	
+		List<ClientCardResponseDto> list = clientCardservice.listCardByCpf(cpf);	
 		return ResponseEntity.ok(list);
 		
 	}

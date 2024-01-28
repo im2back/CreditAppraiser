@@ -36,6 +36,6 @@ public class ClientCard {
 	private Card card;
 	
 	@Column(name = "limit_aprove")
-	private BigDecimal limitAprove;
+	private BigDecimal limitApproved;
 
 }

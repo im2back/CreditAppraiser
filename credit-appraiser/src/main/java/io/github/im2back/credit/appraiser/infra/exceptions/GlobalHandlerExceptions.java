@@ -1,4 +1,4 @@
-package io.github.im2back.credit.appraiser.exceptions;
+package io.github.im2back.credit.appraiser.infra.exceptions;
 
 import javax.servlet.http.HttpServletRequest;
 

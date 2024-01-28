@@ -17,7 +17,7 @@ public class ClientCardService {
 	private ClientCardRepository repository;
 
 	public List<ClientCardResponseDto> listCardByCpf(String cpf) {
-		var listClientCard = repository.findByCpf(cpf);
+		List<ClientCard> listClientCard = repository.findByCpf(cpf);
 		List<ClientCardResponseDto> listDto = new ArrayList<>();
 
 		for (ClientCard element : listClientCard) {
