@@ -12,7 +12,7 @@ public class AppraiserAMQPConfiguration {
 
 	@Bean
 	public Queue criaFila() {
-		return new Queue("register.clientcard", false);
+		return new Queue("register.clientcard", true);
 	}
 
 	@Bean
