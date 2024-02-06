@@ -18,13 +18,21 @@ import org.springframework.web.util.UriComponentsBuilder;
 import io.github.im2back.msclient.model.ClientRequestDto;
 import io.github.im2back.msclient.model.ClientResponseDto;
 import io.github.im2back.msclient.service.ClientService;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("clients")
+@Slf4j
 public class ClientController {
 	
 	@Autowired
 	private ClientService service;
+	
+	@GetMapping
+	public String status() {
+		log.info("obtendo status do microservice de clientes");
+		return "ok";
+	}
 
 
 	@PostMapping
