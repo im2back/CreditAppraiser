@@ -1,6 +1,6 @@
 
 # Avaliador de Crédito
-
+  ⚠️⚠️⚠️  👉🏻  📢 Projeto ainda em andamento, ainda será feito os testes de unidade e possiveis melhorias.
 ## Sobre o projeto
 Este projeto será implementado por meio da arquitetura de microsserviços, visando simular o processo de avaliação de crédito realizado por instituições bancárias, bem como a emissão de cartões de crédito com base nos resultados dessa avaliação. Como um projeto voltado para fins de estudos, seu principal objetivo é aplicar e consolidar os conhecimentos adquiridos nas seguintes áreas : <br><br>
 ✔️ Testes unitarios com Junit <br>
@@ -12,11 +12,12 @@ Este projeto será implementado por meio da arquitetura de microsserviços, visa
 ✔️ Docker <br>
 ✔️ Empacotar e gerar imagens<br>
 ✔️ Parametrizar dados<br>
-
+<br><br>
 
 # Ilustração da arquitetura do projeto rodando em containers docker
 
 ![image](https://github.com/im2back/Project-MicroserviceArchitecture/assets/117541466/32164ea1-41f8-49dc-bb3a-14c403376a1d)
+<br><br><br>
 
 # Tecnologias utilizadas
 ## Back end
@@ -46,6 +47,6 @@ Pré-requisitos: Java 17
 
 # Autor
 
-Jefferson Richards SEna de Souza
+Jefferson Richards Sena de Souza
 
-https://www.linkedin.com/in/wmazoni
+https://www.linkedin.com/in/jefferson-richards-sena-de-souza-4110a3222/
