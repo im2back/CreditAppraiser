@@ -14,4 +14,4 @@ COPY --from=build /usr/src/app/${JAR_FILE} app.jar
 ARG EUREKA_SERVER=discovery-server
 ARG DATABASE_SERVER=database
 
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+ENTRYPOINT ["java", "-jar","-Dspring.profiles.active=prod", "/app.jar"]
