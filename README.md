@@ -1,6 +1,6 @@
 
 # Avaliador de Crédito
-  ⚠️⚠️⚠️  👉🏻  📢 Projeto ainda em andamento, ainda será feito os testes de unidade e possiveis melhorias.
+  ⚠️ Projeto em andamento. Ainda esta sendo implementado os testes de unidade, possiveis melhorias e porteriormente dockerizado e disponibilizado a execução do mesmo. ⚠️
 ## Sobre o projeto
 Este projeto será implementado por meio da arquitetura de microsserviços, visando simular o processo de avaliação de crédito realizado por instituições bancárias, bem como a emissão de cartões de crédito com base nos resultados dessa avaliação. Como um projeto voltado para fins de estudos, seu principal objetivo é aplicar e consolidar os conhecimentos adquiridos nas seguintes áreas : <br><br>
 ✔️ Testes unitarios com Junit <br>
