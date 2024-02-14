@@ -2,7 +2,7 @@ package io.github.im2back.msclient.controller;
 
 import java.net.URI;
 
-import javax.servlet.ServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,21 +36,18 @@ public class ClientController {
 
 
 	@PostMapping
-	ResponseEntity<ClientResponseDto> saveClient(@RequestBody ClientRequestDto clientRequestDto, UriComponentsBuilder uriBuilder){
+	ResponseEntity<ClientResponseDto> saveClient(@RequestBody @Valid ClientRequestDto clientRequestDto, UriComponentsBuilder uriBuilder){
 		ClientResponseDto clientResponseDto = service.saveClient(clientRequestDto);
 		
 		UriComponents uriComponents = uriBuilder.path("/cards/{id}").buildAndExpand(clientResponseDto.id());
 	    URI location = uriComponents.toUri();
 			
-		return ResponseEntity.created(location).body(clientResponseDto);
-		
+		return ResponseEntity.created(location).body(clientResponseDto);		
 	}
 	
 	@GetMapping(params="cpf")
-	ResponseEntity<ClientResponseDto> getClientByCpf(@RequestParam("cpf")  String cpf,  ServletRequest request){
-		ClientResponseDto clientResponseDto = service.findByCpf(cpf);
-		System.out.println("URL CHAMADA: "+ request.getServerPort() );
-		
-		return ResponseEntity.ok(clientResponseDto);
+	ResponseEntity<ClientResponseDto> getClientByCpf(@RequestParam("cpf")  String cpf){
+		ClientResponseDto clientResponseDto = service.findByCpf(cpf);	
+			return ResponseEntity.ok(clientResponseDto);
 	}
 }

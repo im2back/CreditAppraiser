@@ -1,9 +1,13 @@
 package io.github.im2back.msclient.exceptions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -23,6 +27,26 @@ public class GlobalHandlerException {
 		
 		return ResponseEntity.status(status).body(error);
 }
+	
+	@SuppressWarnings("rawtypes")
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public ResponseEntity MethodArgumentNotValidException(MethodArgumentNotValidException ex, HttpServletRequest request) {
+		  
+			StandardErrorBeanValidation standardError = new StandardErrorBeanValidation();
+			List<String> messages = new ArrayList<>();
+	
+	        ex.getBindingResult().getFieldErrors().forEach(fieldError -> {
+	        	messages.add(fieldError.getField()+" : "+fieldError.getDefaultMessage());
+	        });
+	           
+	        standardError.setError("Bad Request");
+	        standardError.setPath(request.getRequestURI());
+	        standardError.setStatus(HttpStatus.BAD_REQUEST.value());
+	        standardError.setMessage(messages);
+
+	        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(standardError);
+
+	}
 
 	
 }
