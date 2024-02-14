@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import io.github.im2back.msclient.service.exception.ServiceClientExceptions;
+import io.github.im2back.msclient.service.exception.ServiceValidationsExceptions;
 
 @ControllerAdvice
 public class GlobalHandlerException {
@@ -46,6 +47,18 @@ public class GlobalHandlerException {
 
 	        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(standardError);
 
+	}
+	
+	@SuppressWarnings("rawtypes")
+	@ExceptionHandler(ServiceValidationsExceptions.class)
+	public ResponseEntity  serviceValidationsExceptions(ServiceValidationsExceptions ex,HttpServletRequest request) {
+		var standardError = new StandardError();
+		standardError.setMessage(ex.getMessage());
+		standardError.setPath(request.getRequestURI());
+		standardError.setStatus(HttpStatus.CONFLICT.value());
+		standardError.setError("Conflict");
+		
+		return ResponseEntity.status(HttpStatus.CONFLICT).body(standardError);
 	}
 
 	

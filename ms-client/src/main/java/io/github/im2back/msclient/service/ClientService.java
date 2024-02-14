@@ -1,5 +1,6 @@
 package io.github.im2back.msclient.service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import javax.transaction.Transactional;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import io.github.im2back.msclient.model.Client;
 import io.github.im2back.msclient.model.ClientRequestDto;
 import io.github.im2back.msclient.model.ClientResponseDto;
+import io.github.im2back.msclient.model.validations.CustomerRegistrationValidation;
 import io.github.im2back.msclient.repository.ClientRepository;
 import io.github.im2back.msclient.service.exception.ServiceClientExceptions;
 
@@ -19,8 +21,13 @@ public class ClientService {
 	@Autowired 
 	ClientRepository repository;
 	
+	@Autowired
+	private List<CustomerRegistrationValidation> validationsRegister;
+	
 	@Transactional
 	public ClientResponseDto saveClient(ClientRequestDto clientRequestDto) {
+		validationsRegister.forEach(v -> v.valid(clientRequestDto));
+		
 		Client clientSave = new Client(clientRequestDto);
 		repository.save(clientSave);
 		return new ClientResponseDto(clientSave);
