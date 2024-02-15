@@ -39,7 +39,7 @@ public class ClientController {
 	ResponseEntity<ClientResponseDto> saveClient(@RequestBody @Valid ClientRequestDto clientRequestDto, UriComponentsBuilder uriBuilder){
 		ClientResponseDto clientResponseDto = service.saveClient(clientRequestDto);
 		
-		UriComponents uriComponents = uriBuilder.path("/cards/{id}").buildAndExpand(clientResponseDto.id());
+		UriComponents uriComponents = uriBuilder.path("/clients/{id}").buildAndExpand(clientResponseDto.id());
 	    URI location = uriComponents.toUri();
 			
 		return ResponseEntity.created(location).body(clientResponseDto);		
