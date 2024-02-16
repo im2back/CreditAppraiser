@@ -31,13 +31,16 @@ public class ClientService {
 		
 		Client clientSave = new Client(clientRequestDto);
 		repository.save(clientSave);
+		
 		return new ClientResponseDto(clientSave);
 	}
 	
 	public ClientResponseDto findByCpf(String cpf) {
 		try {
-			Client client = repository.findByCpf(cpf).get();		
+			
+			Client client = repository.findByCpf(cpf).get();	
 			return new ClientResponseDto(client);
+			
 		} catch (NoSuchElementException e) {
 			throw new ServiceClientExceptions(e.getMessage(),cpf);
 		}
