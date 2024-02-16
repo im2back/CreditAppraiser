@@ -5,12 +5,13 @@ import java.math.BigDecimal;
 public record ClientCardResponseDto(
 		String cardName,
 		String cardFlag,
+		String cpf,
 		BigDecimal limitApproved
 		) {
 
 
 	public ClientCardResponseDto(ClientCard c) {
-		this(c.getCard().getCardName(),c.getCard().getCardFlag().toString(),c.getLimitApproved());
+		this(c.getCard().getCardName(),c.getCard().getCardFlag().toString(),c.getCpf(),c.getLimitApproved());
 	}
 
 }
