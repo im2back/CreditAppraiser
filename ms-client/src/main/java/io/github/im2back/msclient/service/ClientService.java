@@ -19,13 +19,14 @@ import io.github.im2back.msclient.service.exception.ServiceClientExceptions;
 public class ClientService {
 
 	@Autowired 
-	ClientRepository repository;
+	private ClientRepository repository;
 	
 	@Autowired
 	private List<CustomerRegistrationValidation> validationsRegister;
 	
 	@Transactional
 	public ClientResponseDto saveClient(ClientRequestDto clientRequestDto) {
+		
 		validationsRegister.forEach(v -> v.valid(clientRequestDto));
 		
 		Client clientSave = new Client(clientRequestDto);
