@@ -21,6 +21,8 @@ public class AppraiserListener {
 	private CardRepository cardRepository;
 	@Autowired
 	private ClientCardRepository clientCardRepository;
+	
+   
 
 	@RabbitListener(queues = "register.clientcard")
 	public void receiveMessages(@Payload String msg) {
@@ -31,7 +33,8 @@ public class AppraiserListener {
 			IssueCard datas = mapper.readValue(msg, IssueCard.class);
 			Card card = cardRepository.findById(datas.idCard()).orElseThrow();
 			
-			ClientCard clientCard = new ClientCard(null, datas.cpf(), card, datas.limitApproved());			
+			ClientCard clientCard = new ClientCard(null, datas.cpf(), card, datas.limitApproved());	
+			
 			clientCardRepository.save(clientCard);
 			
 		} catch (JsonProcessingException e) {
