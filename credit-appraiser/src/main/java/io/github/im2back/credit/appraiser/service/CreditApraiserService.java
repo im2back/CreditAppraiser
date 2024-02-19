@@ -34,8 +34,10 @@ public class CreditApraiserService {
 	private IssueCardPublisher issueCardPublisher;
 
 	public ClientSituation getClientSituation(String cpf) {
+		
 		ClientDto clientResponse = getClientByCpf(cpf);
 		ResponseEntity<List<ClientCardDto>> clientCardResponse = clientResourceCard.getClientCardByCpf(cpf);
+		
 		List<ClientCardDto> listResponse = clientCardResponse.getBody();
 		return new ClientSituation(clientResponse, listResponse);
 	}

@@ -34,7 +34,6 @@ public class ClientController {
 		return "ok";
 	}
 
-
 	@PostMapping
 	ResponseEntity<ClientResponseDto> saveClient(@RequestBody @Valid ClientRequestDto clientRequestDto, UriComponentsBuilder uriBuilder){
 		ClientResponseDto clientResponseDto = service.saveClient(clientRequestDto);

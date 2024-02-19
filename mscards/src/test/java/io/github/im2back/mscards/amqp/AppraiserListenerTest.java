@@ -34,6 +34,7 @@ class AppraiserListenerTest {
 
 	@Mock
 	private CardRepository cardRepository;
+	
 	@Mock
 	private ClientCardRepository clientCardRepository;
 
@@ -59,7 +60,7 @@ class AppraiserListenerTest {
 	    }
 	
 	@Test
-	@DisplayName("Deveria receber uma menssagem da fila e salvar um objeto no banco de dados")
+	@DisplayName("Deveria receber uma menssagem contendo um json e acessar repositorios passando os parametros corretos")
 	void receiveMessages() throws JsonMappingException, JsonProcessingException {	
 		//ARRANGE
 		String msg = issueCardJsonMsg; 
@@ -78,7 +79,8 @@ class AppraiserListenerTest {
        
        BDDMockito.then(clientCardRepository).should().save(clientCardCaptor.capture());
        var clientCardCaptured = clientCardCaptor.getValue();		
-       Assertions.assertEquals(issueCard.cpf(), clientCardCaptured.getCpf()); 		
+       Assertions.assertEquals(issueCard.cpf(), clientCardCaptured.getCpf()); 	
+       Assertions.assertEquals(issueCard.limitApproved(), clientCardCaptured.getLimitApproved()); 
        Assertions.assertEquals(card.get(), clientCardCaptured.getCard()); 		
   
 	}
