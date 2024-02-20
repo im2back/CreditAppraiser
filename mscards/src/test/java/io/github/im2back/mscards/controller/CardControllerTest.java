@@ -107,7 +107,7 @@ class CardControllerTest {
 		}
 		
 		@Test
-		@DisplayName("e")
+		@DisplayName("Deveria retornar o status 200ok e o objeto correto")
 		void getClientCardsByCpf() throws Exception {
 			
 			//ARRANJE

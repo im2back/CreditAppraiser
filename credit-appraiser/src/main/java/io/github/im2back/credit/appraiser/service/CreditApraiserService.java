@@ -13,6 +13,7 @@ import feign.FeignException;
 import io.github.im2back.credit.appraiser.infra.amqp.IssueCardPublisher;
 import io.github.im2back.credit.appraiser.infra.clients.ClientResourceCard;
 import io.github.im2back.credit.appraiser.infra.clients.ClientResourceClient;
+import io.github.im2back.credit.appraiser.infra.util.Utils;
 import io.github.im2back.credit.appraiser.model.ClientSituation;
 import io.github.im2back.credit.appraiser.model.ProtocolIssueCard;
 import io.github.im2back.credit.appraiser.model.assessmentdto.ResultAssessmentClientResponseDto;
@@ -28,8 +29,10 @@ public class CreditApraiserService {
 
 	@Autowired
 	private ClientResourceClient clientResourceClient;
+	
 	@Autowired
 	private ClientResourceCard clientResourceCard;
+	
 	@Autowired
 	private IssueCardPublisher issueCardPublisher;
 
@@ -65,17 +68,10 @@ public class CreditApraiserService {
 		}
 	}
 
-	private BigDecimal creditRatingAlgorithm(BigDecimal limitBasic, Integer age) {
-		BigDecimal ageBD = BigDecimal.valueOf(age);
-		BigDecimal factor = ageBD.divide(BigDecimal.valueOf(10));
-		BigDecimal limitapproved = factor.multiply(limitBasic);
-		return limitapproved;
-	}
-
 	private List<CardApprovedDto> createListCardsApproveds(List<CardDto> listOfAvailableCards, Integer age) {
 		List<CardApprovedDto> listCardsApproveds = new ArrayList<>();
 		for (CardDto card : listOfAvailableCards) {
-			BigDecimal limitApproved = creditRatingAlgorithm(card.basicLimit(), age);
+			BigDecimal limitApproved = Utils.creditRatingAlgorithm(card.basicLimit(), age);
 			CardApprovedDto approved = new CardApprovedDto(card.cardName(), card.cardFlag(), limitApproved);
 			listCardsApproveds.add(approved);
 		}

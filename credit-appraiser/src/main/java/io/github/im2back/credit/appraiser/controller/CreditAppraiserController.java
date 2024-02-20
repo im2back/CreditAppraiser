@@ -23,25 +23,26 @@ public class CreditAppraiserController {
 	@Autowired
 	private CreditApraiserService service;
 	
-	@SuppressWarnings("rawtypes")
+	
 	@GetMapping(value = "client-status", params = "cpf")
-	public ResponseEntity checkStatusClient(@RequestParam("cpf") String cpf) {
-		ClientSituation customerSituation;
-			customerSituation = service.getClientSituation(cpf);
+	public ResponseEntity<ClientSituation> checkStatusClient(@RequestParam("cpf") String cpf) {
+		
+		ClientSituation customerSituation = service.getClientSituation(cpf);
 				return ResponseEntity.ok(customerSituation);
 	}
 	
 	@PostMapping
 	public ResponseEntity<ResultAssessmentClientResponseDto> creditAssessment(@RequestBody DataAssessmentRequestDto data) {	
-		ResultAssessmentClientResponseDto returnAssessmentClient= service.evaluatingClients(data.cpf(),data.income());
 		
+		ResultAssessmentClientResponseDto returnAssessmentClient = service.evaluatingClients(data.cpf(),data.income());
+
 		return ResponseEntity.ok(returnAssessmentClient);
 		
 	}
 	
 	@PostMapping("request-card")
 	public ResponseEntity<ProtocolIssueCard> issueCard(@RequestBody IssueCard datas){
-		var protocol = service.requestCardIssuance(datas);
+		ProtocolIssueCard protocol = service.requestCardIssuance(datas);
 			return ResponseEntity.ok().body(protocol);
 	}
 }
