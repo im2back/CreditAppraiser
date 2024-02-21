@@ -10,4 +10,8 @@ RUN addgroup -S spring && adduser -S spring -G spring
 USER spring:spring
 ARG JAR_FILE=target/*.jar
 COPY --from=build /usr/src/app/${JAR_FILE} app.jar
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+
+ARG EUREKA_SERVER=eureka
+
+ENTRYPOINT ["java", "-jar","-Dspring.profiles.active=prod", "/app.jar"]
+
