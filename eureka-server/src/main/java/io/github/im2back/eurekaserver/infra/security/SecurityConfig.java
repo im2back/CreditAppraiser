@@ -18,13 +18,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-	    http
-	        .csrf().disable()
-	        .authorizeRequests()
-	            .antMatchers("/v3/api-docs/**", "swagger-ui.html", "/swagger-ui/**").permitAll() // Permitir acesso sem autenticação
-	            .anyRequest().authenticated() // Todas as outras requisições precisam de autenticação
-	        .and()
-	        .httpBasic(); // Usar autenticação básica HTTP
+		http
+		.csrf().disable()
+		.authorizeRequests().anyRequest().authenticated()
+		.and()
+		.httpBasic();
 	}
 
 
