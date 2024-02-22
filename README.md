@@ -113,13 +113,14 @@ CREATE DATABASE  cards_ms;
 👉 Poweshell:
 docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.12-management
 
+
 # O usário e senhas padrão do RabbitMq já estão configurados no nosso projeto.
 # O serviço responsavel por enviar a menssagem já está configurado para criar a fila.
 ```
 <br><br>
 
  ### Criar a instância do KeyCloak:
-```rabbitmq
+```keycloak
 ✅ Criar uma instância do KeyCloak Através do docker
 👉 Poweshell:
 docker run -p 8085:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:23.0.6 start-dev
@@ -170,9 +171,74 @@ Agora para obter seu "secret", siga as etapas abaixo:
 
 🏁 Agora basta  baixar a documentação disponibilizada no link acima. Depois de baixar é só importar no postman, gerar um novo token e passa-lo nas requisições :
 
-
-
 ```
+
+# Executando o projeto em containers
+```
+✅Criar a Network Docker
+Crie a rede Docker chamada creditappraiser-network para facilitar a comunicação entre os contêineres.
+
+bash
+Copy code
+docker network create creditappraiser-network
+
+✅Construir as Imagens dos Microserviços
+Navegue até a pasta de cada microserviço. Cada microserviço está configurado com seu próprio Dockerfile, então você precisa construir as imagens Docker correspondentes. Execute o comando abaixo em cada pasta, substituindo NOME_DA_IMAGEM pelo nome do microserviço. Use os seguintes nomes para as imagens, que são consistentes com os comandos subsequentes:
+
+ms-creditappraiser
+ms-cards
+gateway
+clients-ms
+eureka
+
+bash
+Copy code
+docker build --build-arg JAR_FILE=target/*.jar -t NOME_DA_IMAGEM/image:ultimate .
+
+Observação: Verifique se todas as portas no localhost necessárias para expor os contêineres estão disponíveis.
+
+✅Criar os Contêineres
+OBS: Criar o keycloak de acordo com a explicação anterior sobre o mesmo e adicionar o seu keycloak a network -->  docker network connect creditappraiser-network keycloak 
+
+
+✔️Crie o contêiner RabbitMQ para gestão de mensagens:
+
+bash
+Copy code
+docker run -it --rm --name rabbitmq --network creditappraiser-network -p 5672:5672 -p 15672:15672 rabbitmq:3.12-management
+
+
+✔️Crie o contêiner MySQL para o banco de dados, substituindo a senha conforme necessário:
+
+bash
+Copy code
+docker run --name creddit-database -p 3306:3306 --network creditappraiser-network -e MYSQL_ROOT_PASSWORD=Rtyfghvbn1* -d mysql:8.0.31
+
+
+✔️Crie os contêineres para cada microserviço usando os comandos abaixo. 
+
+bash
+Copy code
+docker run --name ms-creditappraiser --network creditappraiser-network -e EUREKA_SERVER=eureka -e RABBIT_MQ=rabbitmq -d ms-creditappraiser/image:ultimate
+
+docker run --name ms-cards --network creditappraiser-network -e EUREKA_SERVER=eureka -e DATABASE_SERVER=creddit-database -e RABBIT_MQ=rabbitmq -d ms-cards/image:ultimate
+
+docker run --name gateway -p 8080:8080 --network creditappraiser-network -e EUREKA_SERVER=eureka -e KEYCLOAK_SERVER=keycloak -e KEYCLOAK_PORT=8080 -d gateway/image:ultimate
+
+docker run --name ms-clients --network creditappraiser-network -e EUREKA_SERVER=eureka -e DATABASE_SERVER=creddit-database -d clients-ms/image:ultimate
+
+docker run --name eureka -p 8081:8081 --network creditappraiser-network -e EUREKA_SERVER=eureka -d eureka/image:ultimate
+
+###Lembre-se de que todos os contêineres devem fazer parte da mesma rede (creditappraiser-network).
+
+✔️Configurar a Front-URL do Keycloak
+Atualize a front-url do Keycloak para apontar para o endereço do contêiner, garantindo a correta integração de autenticação:
+Basta acessar o dashboard do keycloak e alterar a fronturl
+
+http://keycloak:8080
+´´´
+
+
 
 
 
