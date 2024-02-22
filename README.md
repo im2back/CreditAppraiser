@@ -4,29 +4,29 @@
 ## Sobre o projeto
 Este projeto será implementado por meio da arquitetura de microsserviços, visando simular o processo de avaliação de crédito realizado por instituições bancárias, bem como a emissão de cartões de crédito com base nos resultados dessa avaliação. Como um projeto voltado para fins de estudos, seu principal objetivo é aplicar e consolidar os conhecimentos adquiridos nas seguintes áreas : <br><br>
 
-1. **Arquitetura de Microsserviços**: Detalhamento da estrutura de microsserviços adotada no projeto.
-2. **Testes**:
-   - **Testes Unitários**: Implementação e execução de testes unitários.
-   - **Testes Automatizados**: Desenvolvimento de testes automatizados para garantir a qualidade do software.
-3. **Comunicação Assíncrona**: Uso do RabbitMQ para gerenciar a comunicação assíncrona entre os serviços.
-4. **Configuração dos Perfis de Ambiente**: Definição e configuração dos perfis de ambiente, como desenvolvimento e produção.
-5. **Versionamento do Banco de Dados**: Utilização do Flyway para o controle de versão do banco de dados.
-6. **Documentação da API**: Criação da documentação da API para facilitar o entendimento e uso por desenvolvedores externos.
-7. **Versionamento do Repositório Remoto**: Uso do GitHub para versionamento e colaboração no código do projeto.
-8. **Dockerização do Projeto**:
-   - **Build do Projeto Utilizando Dockerfile**: Construção do projeto com Docker para facilitar a implantação e execução em diferentes ambientes.
-   - **Geração de Imagem Docker**: Processo de criação de uma imagem Docker do projeto.
-   - **Criação do Container**: Instruções para criar um container a partir da imagem Docker gerada.
-   - **Orquestração de Containers**: Uso de ferramentas de orquestração para gerenciar múltiplos containers, melhorando a escalabilidade e a disponibilidade.
-   - **Comunicação entre Containers**: Configuração da rede para permitir a comunicação entre os containers.
-9. **Parametrização de Dados**: Técnicas utilizadas para parametrizar dados, facilitando a customização e configuração do projeto.
-10. **Segurança da API**: Implementação de medidas de segurança para a API, utilizando o Keycloak para autenticação e autorização.
-11. **Refatoração de Código**: Processo contínuo de melhoria do código para aumentar a legibilidade e a manutenção.
-12. **Banco de Dados**: Especificações e configurações do banco de dados utilizado no projeto.
-13. **Tratamento de Exceções**:
-    - **Lançamento de Exceções Personalizadas**: Criação e uso de exceções personalizadas para um melhor controle de erros.
+1. **Arquitetura de Microsserviços**: Detalhamento da estrutura de microsserviços adotada no projeto.<br><br>
+2. **Testes**: <br>
+   ▪️ **Testes Unitários**: Implementação e execução de testes unitários. <br> 
+   ▪️ **Testes Automatizados**: Desenvolvimento de testes automatizados para garantir a qualidade do software.<br><br>
+3. **Comunicação Assíncrona**: Uso do RabbitMQ para gerenciar a comunicação assíncrona entre os serviços.<br><br>
+4. **Configuração dos Perfis de Ambiente**: Definição e configuração dos perfis de ambiente, como desenvolvimento e produção.<br><br>
+5. **Versionamento do Banco de Dados**: Utilização do Flyway para o controle de versão do banco de dados.<br><br>
+6. **Documentação da API**: Criação da documentação da API para facilitar o entendimento e uso por desenvolvedores externos.<br><br>
+7. **Versionamento do Repositório Remoto**: Uso do GitHub para versionamento e colaboração no código do projeto.<br><br>
+8. **Dockerização do Projeto**:<br>
+   ▪️ **Build do Projeto Utilizando Dockerfile**: Construção do projeto com Docker para facilitar a implantação e execução em diferentes ambientes.<br>
+   ▪️ **Geração de Imagem Docker**: Processo de criação de uma imagem Docker do projeto.<br>
+   ▪️ **Criação do Container**: Instruções para criar um container a partir da imagem Docker gerada.<br>
+   ▪️ **Orquestração de Containers**: Uso de ferramentas de orquestração para gerenciar múltiplos containers, melhorando a escalabilidade e a disponibilidade.<br>
+   ▪️ **Comunicação entre Containers**: Configuração da rede para permitir a comunicação entre os containers.<br><br>
+9. **Parametrização de Dados**: Técnicas utilizadas para parametrizar dados, facilitando a customização e configuração do projeto.<br><br>
+10. **Segurança da API**: Implementação de medidas de segurança para a API, utilizando o Keycloak para autenticação e autorização.<br><br>
+11. **Refatoração de Código**: Processo contínuo de melhoria do código para aumentar a legibilidade e a manutenção.<br><br>
+12. **Banco de Dados**: Especificações e configurações do banco de dados utilizado no projeto.<br><br>
+13. **Tratamento de Exceções**:<br>
+    ▪️ **Lançamento de Exceções Personalizadas**: Criação e uso de exceções personalizadas para um melhor controle de erros.
 
-Esta estrutura oferece uma visão clara e abrangente dos tópicos abordados no projeto.
+#Esta estrutura oferece uma visão clara e abrangente dos tópicos abordados no projeto.
 
 <br><br>
 
