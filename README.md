@@ -85,7 +85,7 @@ Pré-requisitos: <br>
 
 ✅ Criar uma instância do MySql Através do docker
 👉 Poweshell:
-docker run --name creddit-database -p 3306:3306 --network creditappraiser-network -e MYSQL_ROOT_PASSWORD=Rtyfghvbn1* = -d mysql:8.0.31
+docker run --name creddit-database -p 3306:3306 --network creditappraiser-network -e MYSQL_ROOT_PASSWORD=Rtyfghvbn1* -d mysql:8.0.31
 
 #Feito isso, um usuário com as seguintes credenciais será criado:
 👤 Login: root
