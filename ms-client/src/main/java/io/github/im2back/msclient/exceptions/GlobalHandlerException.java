@@ -19,7 +19,7 @@ public class GlobalHandlerException {
 
 	@SuppressWarnings("rawtypes")
 	@ExceptionHandler(ServiceClientExceptions.class)
-	public ResponseEntity ResourceNotFound(ServiceClientExceptions e, HttpServletRequest request) {
+	public ResponseEntity resourceNotFound(ServiceClientExceptions e, HttpServletRequest request) {
 		HttpStatus status = HttpStatus.NOT_FOUND;
 		
 		String[] parts = e.getMessage().split("\\,"); 
@@ -31,7 +31,7 @@ public class GlobalHandlerException {
 	
 	@SuppressWarnings("rawtypes")
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public ResponseEntity MethodArgumentNotValidException(MethodArgumentNotValidException ex, HttpServletRequest request) {
+	public ResponseEntity methodArgumentNotValidException(MethodArgumentNotValidException ex, HttpServletRequest request) {
 		  
 			StandardErrorBeanValidation standardError = new StandardErrorBeanValidation();
 			List<String> messages = new ArrayList<>();

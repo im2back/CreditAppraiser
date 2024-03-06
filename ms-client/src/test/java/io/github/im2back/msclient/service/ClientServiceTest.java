@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,6 +23,7 @@ import io.github.im2back.msclient.model.ClientRequestDto;
 import io.github.im2back.msclient.model.ClientResponseDto;
 import io.github.im2back.msclient.model.validations.CustomerRegistrationValidation;
 import io.github.im2back.msclient.repository.ClientRepository;
+import io.github.im2back.msclient.service.exception.ServiceClientExceptions;
 
 @ExtendWith(MockitoExtension.class)
 class ClientServiceTest {
@@ -109,9 +111,27 @@ class ClientServiceTest {
 				
 		assertEquals(response.cpf(), client.get().getCpf());
 		assertEquals("Jefferson", response.name());
+				
+	}
+	
+	@Test
+	@DisplayName("Deveria retornar uma exceção ServiceClientExceptions ao retornar um client nulo")
+	void findByCpfTest02() {
+		//ARRANGE
+		String cpf = "007.692.032-13"; 
 		
+
+		Optional<Client> client = Optional.ofNullable(null);
 		
+		BDDMockito.when(repository.findByCpf(cpf)).thenReturn(client);
 		
+		   // ACT & ASSERT
+	    Assertions.assertThrows(ServiceClientExceptions.class, () -> {
+	        service.findByCpf(cpf); 
+	    });
+				
+	
+				
 	}
 
 }

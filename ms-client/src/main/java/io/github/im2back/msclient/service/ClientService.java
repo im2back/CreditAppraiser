@@ -1,7 +1,6 @@
 package io.github.im2back.msclient.service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import javax.transaction.Transactional;
 
@@ -18,33 +17,26 @@ import io.github.im2back.msclient.service.exception.ServiceClientExceptions;
 @Service
 public class ClientService {
 
-	@Autowired 
+	@Autowired
 	private ClientRepository repository;
-	
+
 	@Autowired
 	private List<CustomerRegistrationValidation> validationsRegister;
-	
+
 	@Transactional
 	public ClientResponseDto saveClient(ClientRequestDto clientRequestDto) {
-		
+
 		validationsRegister.forEach(v -> v.valid(clientRequestDto));
-		
+
 		Client clientSave = new Client(clientRequestDto);
 		repository.save(clientSave);
-		
+
 		return new ClientResponseDto(clientSave);
 	}
-	
+
 	public ClientResponseDto findByCpf(String cpf) {
-		try {
-			
-			Client client = repository.findByCpf(cpf).get();	
-			return new ClientResponseDto(client);
-			
-		} catch (NoSuchElementException e) {
-			throw new ServiceClientExceptions(e.getMessage(),cpf);
-		}
 		
+		Client client = repository.findByCpf(cpf).orElseThrow(() -> new ServiceClientExceptions(cpf, ""));
+		return new ClientResponseDto(client);
 	}
-	
 }
