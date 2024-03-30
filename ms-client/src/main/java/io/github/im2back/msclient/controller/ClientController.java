@@ -44,6 +44,7 @@ public class ClientController {
 		return ResponseEntity.created(location).body(clientResponseDto);		
 	}
 	
+
 	@GetMapping(params="cpf")
 	ResponseEntity<ClientResponseDto> getClientByCpf(@RequestParam("cpf")  String cpf){
 		ClientResponseDto clientResponseDto = service.findByCpf(cpf);	

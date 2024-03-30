@@ -36,7 +36,7 @@ public class ClientService {
 
 	public ClientResponseDto findByCpf(String cpf) {
 		
-		Client client = repository.findByCpf(cpf).orElseThrow(() -> new ServiceClientExceptions(cpf, ""));
+		Client client = repository.findByCpf(cpf).orElseThrow(() -> new ServiceClientExceptions(cpf));
 		return new ClientResponseDto(client);
 	}
 }

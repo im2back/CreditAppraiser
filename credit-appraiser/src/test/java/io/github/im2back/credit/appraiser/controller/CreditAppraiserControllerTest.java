@@ -68,8 +68,8 @@ class CreditAppraiserControllerTest {
 		DataAssessmentRequestDto dataAssessmentRequestDto = new DataAssessmentRequestDto("007.692.032-13", (long) 1000 );
 		
 		List<CardApprovedDto> list = new ArrayList<>();
-		CardApprovedDto card1 = new CardApprovedDto("Card1", "FLAG1", new BigDecimal(3000));
-		CardApprovedDto card2 = new CardApprovedDto("Card2", "FLAG2", new BigDecimal(3000));
+		CardApprovedDto card1 = new CardApprovedDto(1l,"Card1", "FLAG1", new BigDecimal(3000));
+		CardApprovedDto card2 = new CardApprovedDto(1l,"Card2", "FLAG2", new BigDecimal(3000));
 		list.add(card1);
 		list.add(card2);
 		ResultAssessmentClientResponseDto result = new ResultAssessmentClientResponseDto(list);

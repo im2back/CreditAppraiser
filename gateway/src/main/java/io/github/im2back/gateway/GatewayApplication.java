@@ -8,7 +8,6 @@ import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 
-
 @EnableEurekaClient
 @EnableDiscoveryClient
 @SpringBootApplication
@@ -25,7 +24,10 @@ public class GatewayApplication {
 				.route(r -> r.path("/clients/**").uri("lb://ms-clients"))
 				.route(r -> r.path("/cards/**").uri("lb://ms-cards"))
 				.route(r -> r.path("/credit-appraiser/**").uri("lb://ms-appraiser"))
+				.route(r -> r.path("/login/**").uri("lb://auth-login"))
+				.route(r -> r.path("/teste/**").uri("lb://auth-login"))
 				.build();
 	}
+	
 
 }

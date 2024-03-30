@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 
 
 public record CardApprovedDto(
+		Long id,
+		
 		String card,
 		
 		String flag,

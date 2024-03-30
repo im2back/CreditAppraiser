@@ -31,6 +31,7 @@ public class Client {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	
 	private String cpf;
 	
 	@Column(name= "client_name")

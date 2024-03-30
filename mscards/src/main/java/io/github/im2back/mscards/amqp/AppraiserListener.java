@@ -19,6 +19,7 @@ public class AppraiserListener {
 	
 	@Autowired
 	private CardRepository cardRepository;
+	
 	@Autowired
 	private ClientCardRepository clientCardRepository;
 	

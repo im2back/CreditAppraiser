@@ -13,13 +13,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class ClientSituation {
-
-	private ClientDto clientDto;
 	
+	
+
+	private ClientDto clientDto;	
 	private List<ClientCardDto> cards;
 
+	
+	
+	
+	
+	
+	
+	
 	public ClientSituation(ClientDto clientDto, List<ClientCardDto> cards) {
-		
 		this.clientDto = clientDto;
 		this.cards = cards;
 	}

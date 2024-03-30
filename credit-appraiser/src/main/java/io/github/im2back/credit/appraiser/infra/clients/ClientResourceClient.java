@@ -9,6 +9,7 @@ import io.github.im2back.credit.appraiser.model.clientdtos.ClientDto;
 
 
 @FeignClient(name = "ms-clients", path = "/clients")
+//@FeignClient(name = "ms-clients", path = "/clients", configuration = FeignClientConfig.class)
 public interface  ClientResourceClient {
 	
 	@GetMapping(params="cpf")

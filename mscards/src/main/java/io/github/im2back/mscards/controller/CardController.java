@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,6 +36,7 @@ public class CardController {
 	
 	@Transactional
 	@PostMapping
+	@PreAuthorize("hasAnyAuthority('ADMIN_READ','ADMIN_WRITE')")
 	public ResponseEntity<CardResponseDto> register(@RequestBody CardRequestDto cardRequestDto, UriComponentsBuilder uriBuilder){
 			CardResponseDto cardResponseDto = service.save(cardRequestDto);
 			
@@ -43,7 +45,6 @@ public class CardController {
 			
 			return ResponseEntity.created(location).body(cardResponseDto);
 	}
-	
 	
 	@GetMapping(params = "income")
 	public ResponseEntity<List<Card>> getCardsIncomeEqualToOrLess(@RequestParam("income") Long income ){

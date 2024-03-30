@@ -72,7 +72,7 @@ public class CreditApraiserService {
 		List<CardApprovedDto> listCardsApproveds = new ArrayList<>();
 		for (CardDto card : listOfAvailableCards) {
 			BigDecimal limitApproved = Utils.creditRatingAlgorithm(card.basicLimit(), age);
-			CardApprovedDto approved = new CardApprovedDto(card.cardName(), card.cardFlag(), limitApproved);
+			CardApprovedDto approved = new CardApprovedDto(card.id(),card.cardName(), card.cardFlag(), limitApproved);
 			listCardsApproveds.add(approved);
 		}
 		return listCardsApproveds;
