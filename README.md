@@ -74,8 +74,8 @@ Pré-requisitos: <br>
 ✔️ IDE STS 4 (ou outra de sua preferência) 
 ```
 ### Links úteis :
-- Documentação : https://drive.google.com/drive/folders/1oiZqfiQwWUTxqzzlT8svdhSSuGQ_h79H?usp=sharing
-- Realm : https://drive.google.com/file/d/18ENDGxyyLMPgfQ0vgcM1RYj6RUhKlpy1/view?usp=sharing
+- Documentação do Postman : <a href = "https://drive.google.com/drive/folders/1fi4KptK16zvrkjjdCjxPavyJYcxGK2EZ?usp=sharing" >Ducmentação<a>
+- Realm :  <a href = "https://drive.google.com/file/d/17phD6lmk4Z6mxKbXG9oUADPtjCa-VnV4/view?usp=sharing" >Keycloak-Realm<a>
 
 <br><br>
 
@@ -129,7 +129,7 @@ docker run -p 8085:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin
 👤 Login: admin
 🔑 Senha: admin
 
-#Acessar a url http://localhost:8085/ e logar.
+#Acessar a url http://localhost:8085/ e logar. 
 
 ✅ Criando o Realm 
 Baixar o realm : Acessar os links úteis e baixar o arquivo json contendo o realm.
@@ -157,17 +157,14 @@ cd "PATH_DA_PASTA_RAIZ_PROJETO"
  ### Disparando requisições com o postman
 ```project
 
-✅ Obter o "Client Secret" do seu keycloak
-- Fazer login e acessar o DashBoard do keycloak
-- Selecionar o seu Realm [msbankrealm ] 🔻
+✅ Obter o "TOKEN" gerado pelo keycloak
 
-Agora para obter seu "secret", siga as etapas abaixo:
 
-1. Primeiramente, clique na aba "Clients".
-2. Em seguida, na coluna "Client ID", localize e clique em "mscredit".
-3. Após isso, selecione a aba "Credentials".
-4. Procure por "Client Secret" e clique em "REGENERATE".
-5. Por fim, copie o código que foi gerado. Ele será usado posteriormente para obter o token, quando estivermos utilizando o postman.
+1. Acessar o endpoint de Login e passar o objeto contendo credencias pré cadastradas no Reaml. 👉 {"username": "admin", password: "123456" } ou  {"username": "usuariocomum", password: "123456" }
+Obs : O usuario admin tem acesso irrestrito e o usuario comum tem restrições a determinados endpoints.
+
+2. Após enviar a requisição obteremos um Access Token como resposta.
+3. Agora basta copiar o token e adicionalo na aba "Authorization" do postaman como um cabeçalho do tipo "Bearer Token" em todas as requisições do postman.
 
 🏁 Agora basta  baixar a documentação disponibilizada no link acima. Depois de baixar é só importar no postman, gerar um novo token e passa-lo nas requisições :
 
