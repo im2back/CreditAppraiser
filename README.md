@@ -26,7 +26,6 @@ Este projeto será implementado por meio da arquitetura de microsserviços, visa
 13. **Tratamento de Exceções**:<br>
     ▪️ **Lançamento de Exceções Personalizadas**: Criação e uso de exceções personalizadas para um melhor controle de erros.
 
-#Esta estrutura oferece uma visão clara e abrangente dos tópicos abordados no projeto.
 
 <br><br>
 
