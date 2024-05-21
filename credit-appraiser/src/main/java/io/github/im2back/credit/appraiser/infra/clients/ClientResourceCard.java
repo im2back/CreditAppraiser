@@ -10,13 +10,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import io.github.im2back.credit.appraiser.model.carddtos.CardDto;
 import io.github.im2back.credit.appraiser.model.carddtos.ClientCardDto;
 
-
 @FeignClient(name = "ms-cards", path = "/cards")
-public interface  ClientResourceCard {
-	
-	@GetMapping(params="cpf")
-	ResponseEntity<List<ClientCardDto>> getClientCardByCpf(@RequestParam("cpf")  String cpf);
-		
+public interface ClientResourceCard {
+
+	@GetMapping(params = "cpf")
+	ResponseEntity<List<ClientCardDto>> getClientCardByCpf(@RequestParam("cpf") String cpf);
 
 	@GetMapping(params = "income")
 	ResponseEntity<List<CardDto>> getCardsIncomeEqualToOrLess(@RequestParam("income") Long income);
