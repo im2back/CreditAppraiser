@@ -43,7 +43,7 @@ class CardServiceTest {
 		CardRequestDto dto = new CardRequestDto("Name", CardFlag.MASTERCARD, new BigDecimal(1000),new BigDecimal(1100));
 		
 		//ACT
-		CardResponseDto responseAct = cardService.save(dto);
+		CardResponseDto responseAct = cardService.saveCard(dto);
 				
 		//ASSERT
 		BDDMockito.then(cardRepository).should().save(cardCaptor.capture());

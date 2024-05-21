@@ -67,7 +67,7 @@ class CardControllerTest {
 		
 		CardResponseDto jsonEsperado = new CardResponseDto(1l, "Master", CardFlag.MASTERCARD,new BigDecimal(1000), new BigDecimal(1100));
 		
-		BDDMockito.when(cardService.save(jsonRequest)).thenReturn(jsonEsperado);
+		BDDMockito.when(cardService.saveCard(jsonRequest)).thenReturn(jsonEsperado);
 		
 		//ACT + ASSERT 
 		var responseEndPoint = mvc
