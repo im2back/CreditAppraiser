@@ -12,7 +12,6 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String token = request.getHeader("Authorization");
         if (token != null && !token.isEmpty()) {
-            // Armazenar o token em algum lugar acessível pelo Feign RequestInterceptor
             TokenStorage.setToken(token);
             
         }
@@ -21,7 +20,7 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        // Limpar o token após o processamento da requisição
+        // limpandp o token após o processamento da requisição
         TokenStorage.clearToken();
     }
 }

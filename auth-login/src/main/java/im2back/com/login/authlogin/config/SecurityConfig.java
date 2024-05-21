@@ -35,8 +35,7 @@ public class SecurityConfig {
 		http.csrf(AbstractHttpConfigurer::disable)
 		.authorizeRequests(auth ->{
 		auth.antMatchers("/login").permitAll();
-		auth.antMatchers("/login/refresh").permitAll();
-		auth.antMatchers("/teste").hasAnyAuthority("ADMIN_READ","ADMIN_WRITE");		
+		auth.antMatchers("/login/refresh").permitAll();		
 		auth.anyRequest().authenticated();
 		})
 		.oauth2ResourceServer(oauth2-> oauth2.jwt(jwt -> jwt.decoder(jwtDecoder())));

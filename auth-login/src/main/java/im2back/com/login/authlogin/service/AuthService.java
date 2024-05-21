@@ -54,7 +54,7 @@ public class AuthService {
 		}
 
 	}
-	
+
 	public ResponseEntity<String> refreshToken(String refreshToken) {
 
 		httpComponent.httpHeaders().setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -74,7 +74,5 @@ public class AuthService {
 		}
 
 	}
-	
-	
 
 }

@@ -1,9 +1,9 @@
 package io.github.im2back.credit.appraiser.service;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -35,9 +35,11 @@ public class CreditApraiserService {
 	
 	@Autowired
 	private IssueCardPublisher issueCardPublisher;
+	
+
 
 	public ClientSituation getClientSituation(String cpf) {
-		
+
 		ClientDto clientResponse = getClientByCpf(cpf);
 		ResponseEntity<List<ClientCardDto>> clientCardResponse = clientResourceCard.getClientCardByCpf(cpf);
 		
@@ -69,12 +71,12 @@ public class CreditApraiserService {
 	}
 
 	private List<CardApprovedDto> createListCardsApproveds(List<CardDto> listOfAvailableCards, Integer age) {
-		List<CardApprovedDto> listCardsApproveds = new ArrayList<>();
-		for (CardDto card : listOfAvailableCards) {
-			BigDecimal limitApproved = Utils.creditRatingAlgorithm(card.basicLimit(), age);
-			CardApprovedDto approved = new CardApprovedDto(card.id(),card.cardName(), card.cardFlag(), limitApproved);
-			listCardsApproveds.add(approved);
-		}
+		
+		List<CardApprovedDto> listCardsApproveds = new ArrayList<>();		
+		listCardsApproveds = listOfAvailableCards
+				.stream().map(e -> new CardApprovedDto(e.id(),e.cardName(), e.cardFlag(),Utils.creditRatingAlgorithm(e.basicLimit(), age)))
+				.collect(Collectors.toList());
+			
 		return listCardsApproveds;
 	}
 
