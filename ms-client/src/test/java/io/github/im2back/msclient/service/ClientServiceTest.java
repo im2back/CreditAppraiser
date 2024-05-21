@@ -21,7 +21,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import io.github.im2back.msclient.model.Client;
 import io.github.im2back.msclient.model.ClientRequestDto;
 import io.github.im2back.msclient.model.ClientResponseDto;
-import io.github.im2back.msclient.model.validations.CustomerRegistrationValidation;
+import io.github.im2back.msclient.model.validations.ClientRegistrationValidator;
 import io.github.im2back.msclient.repository.ClientRepository;
 import io.github.im2back.msclient.service.exception.ServiceClientExceptions;
 
@@ -41,13 +41,13 @@ class ClientServiceTest {
 	private ArgumentCaptor<String> cpfCaptor;
 
 	@Spy
-	private List<CustomerRegistrationValidation> validations = new ArrayList<>();
+	private List<ClientRegistrationValidator> validations = new ArrayList<>();
 
 	@Mock
-	private CustomerRegistrationValidation validation01;
+	private ClientRegistrationValidator validation01;
 	
 	@Mock
-	private CustomerRegistrationValidation validation02;
+	private ClientRegistrationValidator validation02;
 
 	@Test
 	@DisplayName("Deveria salvar o cliente no banco de acordo com o parametro recebido")

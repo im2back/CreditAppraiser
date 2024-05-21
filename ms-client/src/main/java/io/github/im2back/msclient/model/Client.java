@@ -22,20 +22,20 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Client {
 
-	public Client(ClientRequestDto clientRequestDto) {
-		this.cpf  = clientRequestDto.cpf();
-		this.name = clientRequestDto.name();
-		this.age  = clientRequestDto.age();
-	}
-
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	
+
 	private String cpf;
-	
-	@Column(name= "client_name")
+
+	@Column(name = "client_name")
 	private String name;
-	
+
 	private String age;
+
+	public Client(ClientRequestDto clientRequestDto) {
+		this.cpf = clientRequestDto.cpf();
+		this.name = clientRequestDto.name();
+		this.age = clientRequestDto.age();
+	}
 }
