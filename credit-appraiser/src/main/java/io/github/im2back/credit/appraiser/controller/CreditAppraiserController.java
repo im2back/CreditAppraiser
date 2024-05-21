@@ -41,21 +41,18 @@ public class CreditAppraiserController {
 
 	@Operation(summary = "Retorna um dto contendo o resultado da avaliação de crédito")
 	@ApiResponses({
-			@ApiResponse(responseCode = "200", description = "Valiação de crédito retornada com sucesso", content = @Content(schema = @Schema(implementation = ResultAssessmentClientResponseDto.class))) })
+			@ApiResponse(responseCode = "200", description = "Valiação de crédito retornada com sucesso", 
+					content = @Content(schema = @Schema(implementation = ResultAssessmentClientResponseDto.class))) })
 	@PostMapping
-	public ResponseEntity<ResultAssessmentClientResponseDto> creditAssessment(
-			@RequestBody DataAssessmentRequestDto data) {
+	public ResponseEntity<ResultAssessmentClientResponseDto> creditAssessment(@RequestBody DataAssessmentRequestDto data) {
 
 		ResultAssessmentClientResponseDto returnAssessmentClient = service.evaluatingClients(data.cpf(), data.income());
-
 		return ResponseEntity.ok(returnAssessmentClient);
-
 	}
 
 	@Operation(summary = "Faz uma solicitação de vinculação de um cartão e retorna o número de protocolo da solicitação")
 	@ApiResponses({
-			@ApiResponse(responseCode = "200", description = "Solicitação feita com sucesso + número de protocolo",
-					content = @Content(schema = @Schema(implementation = ProtocolIssueCard.class))) })
+			@ApiResponse(responseCode = "200", description = "Solicitação feita com sucesso + número de protocolo", content = @Content(schema = @Schema(implementation = ProtocolIssueCard.class))) })
 	@PreAuthorize("hasAnyAuthority('ADMIN_READ','ADMIN_WRITE')")
 	@PostMapping("request-card")
 	public ResponseEntity<ProtocolIssueCard> issueCard(@RequestBody IssueCard datas) {

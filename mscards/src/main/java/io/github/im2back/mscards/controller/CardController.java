@@ -47,7 +47,7 @@ public class CardController {
 	@PreAuthorize("hasAnyAuthority('ADMIN_READ','ADMIN_WRITE')")
 	public ResponseEntity<CardResponseDto> register(@RequestBody CardRequestDto cardRequestDto,
 			UriComponentsBuilder uriBuilder) {
-		CardResponseDto cardResponseDto = service.save(cardRequestDto);
+		CardResponseDto cardResponseDto = service.saveCard(cardRequestDto);
 
 		UriComponents uriComponents = uriBuilder.path("/cards/{id}").buildAndExpand(cardResponseDto.id());
 		URI location = uriComponents.toUri();

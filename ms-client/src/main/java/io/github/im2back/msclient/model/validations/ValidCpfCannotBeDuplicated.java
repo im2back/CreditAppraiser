@@ -8,7 +8,7 @@ import io.github.im2back.msclient.repository.ClientRepository;
 import io.github.im2back.msclient.service.exception.ServiceValidationsExceptions;
 
 @Component
-public class ValidCpfCannotBeDuplicated implements CustomerRegistrationValidation {
+public class ValidCpfCannotBeDuplicated implements ClientRegistrationValidator {
 
 	@Autowired
 	ClientRepository repository;

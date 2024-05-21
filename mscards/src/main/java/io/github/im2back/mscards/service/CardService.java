@@ -13,17 +13,16 @@ import io.github.im2back.mscards.repository.CardRepository;
 
 @Service
 public class CardService {
-	
+
 	@Autowired
 	private CardRepository repository;
-	
-	public CardResponseDto save(CardRequestDto cardRequestDto) {
+
+	public CardResponseDto saveCard(CardRequestDto cardRequestDto) {
 		Card cardSave = new Card(cardRequestDto);
-		repository.save(cardSave);			
+		repository.save(cardSave);
 		return new CardResponseDto(cardSave);
 	}
 
-	
 	public List<Card> getCardsIncomeLessOrEqual(Long income) {
 		BigDecimal incomeBigDecimal = BigDecimal.valueOf(income);
 		return repository.findByIncomeLessThanEqual(incomeBigDecimal);
