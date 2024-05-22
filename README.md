@@ -1,6 +1,14 @@
 
 # Avaliador de Crédito
-   🏁 O projeto ja foi finalizado, porém ainda esta sujeito a possiveis melhorias no código. Obrigado pela atenção !  👋😁👍
+   🏁 O projeto ja foi finalizado, porém ainda esta sujeito a possiveis melhorias no código. Obrigado pela atenção !  👋😁👍<BR>
+
+## Demonstração em Vídeo
+
+Clique na imagem abaixo para assistir ao vídeo de demonstração:
+
+[![Assista ao vídeo de demonstração](https://img.youtube.com/vi/mvriEntW628/0.jpg)](https://youtu.be/mvriEntW628?si=Itq1v0X993G3QaNM)
+
+
 ## Sobre o projeto
 Este projeto será implementado por meio da arquitetura de microsserviços, visando simular o processo de avaliação de crédito realizado por instituições bancárias, bem como a emissão de cartões de crédito com base nos resultados dessa avaliação. Como um projeto voltado para fins de estudos, seu principal objetivo é aplicar e consolidar os conhecimentos adquiridos nas seguintes áreas : <br><br>
 
