@@ -45,7 +45,7 @@ public class CardController {
 	@Transactional
 	@PostMapping
 	@PreAuthorize("hasAnyAuthority('ADMIN_READ','ADMIN_WRITE')")
-	public ResponseEntity<CardResponseDto> register(@RequestBody CardRequestDto cardRequestDto,
+	public ResponseEntity<CardResponseDto> registerCard(@RequestBody CardRequestDto cardRequestDto,
 			UriComponentsBuilder uriBuilder) {
 		CardResponseDto cardResponseDto = service.saveCard(cardRequestDto);
 
